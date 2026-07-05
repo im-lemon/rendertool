@@ -11,7 +11,11 @@ charsets = chs["charsets"][0]
 blocks = charsets["blocks"]
 ascii = charsets["ascii"]
 braille = charsets["braille"]
-nf = charsets["nf"]
+nf = charsets["nf"][0]
+
+linux = nf["linux"]
+oses = nf["oses"]
+langs = nf["languages"]
 
 banner = """                                                             
 ▄▄▄▄▄▄▄                  ▄▄            ▄▄▄▄▄▄▄▄▄          ▄▄ 
@@ -57,6 +61,7 @@ def main_menu():
         show_banner()
         print()
         conv_ascii(path, mode)
+
     if choice == 0:
         cls()
         sys.exit()
@@ -67,7 +72,35 @@ def main_menu():
     elif choice == 3:
         get_choice(blocks)
     elif choice == 4:
-        get_choice(nf)
+        def get_choice_nf():
+            cls()
+            show_banner()
+            print()
+            print(Color.blue("[1]: Linux distros."))
+            print()
+            print(Color.blue("[2]: Operating systems."))
+            print()
+            print(Color.blue("[3]: Programming languages."))
+            print()
+            choice = int(input(Color.blue("> ")))
+            cls()
+            show_banner()
+            print()
+            path = input(Color.blue("Enter your image's path: "))
+            path=path.strip('"')
+            if choice == 1:
+                conv_ascii(path, linux)
+            elif choice == 2:
+                conv_ascii(path, oses)
+            elif choice == 3:
+                conv_ascii(path, langs)
+            else:
+                cls()
+                print(Color.red("Choice not supported, taking you back to the main menu!"))
+                sleep(0.5)
+                get_choice_nf()
+        get_choice_nf()
+            
     else:
         cls()
         print(Color.red("Choice not supported, taking you back to the main menu!"))
