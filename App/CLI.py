@@ -8,6 +8,7 @@ charsets = chs["charsets"][0]
 blocks = charsets["blocks"]
 ascii = charsets["ascii"]
 braille = charsets["braille"]
+nf = charsets["nf"]
 
 
 

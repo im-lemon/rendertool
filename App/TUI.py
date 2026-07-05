@@ -3,6 +3,7 @@ import sys
 from Internals.to_ascii import conv_ascii
 import json
 from colorim import Color
+from time import sleep
 
 with open("Internals/chs.json", 'r', encoding="utf-8") as f:
     chs=json.load(f)
@@ -10,6 +11,7 @@ charsets = chs["charsets"][0]
 blocks = charsets["blocks"]
 ascii = charsets["ascii"]
 braille = charsets["braille"]
+nf = charsets["nf"]
 
 banner = """                                                             
 ▄▄▄▄▄▄▄                  ▄▄            ▄▄▄▄▄▄▄▄▄          ▄▄ 
@@ -39,43 +41,38 @@ def main_menu():
     print()
     print(Color.blue("[3]: Render Image in blocks."))
     print()
+    print(Color.blue("[4]: Render Image using Nerd Font glyphs."))
+    print()
     print(Color.blue("[0]: Exit"))
     print()
     choice = int(input(Color.blue("> ")))
+    
+    def get_choice(mode):
+        cls()
+        show_banner()
+        print()
+        path = input(Color.blue("Enter in your image's path: "))
+        path=path.strip('"')
+        cls()
+        show_banner()
+        print()
+        conv_ascii(path, mode)
     if choice == 0:
         cls()
         sys.exit()
     elif choice == 1:
-        cls()
-        show_banner()
-        print()
-        path = input(Color.blue("Enter in your image's path: "))
-        path=path.strip('"')
-        cls()
-        show_banner()
-        print()
-        conv_ascii(path, braille)
-    
+        get_choice(braille)
     elif choice == 2:
-        cls()        
-        show_banner()
-        print()
-        path = input(Color.blue("Enter in your image's path: "))
-        path = path.strip('"')
-        cls()
-        show_banner()
-        print()
-        conv_ascii(path, ascii)
-
+        get_choice(ascii)
     elif choice == 3:
+        get_choice(blocks)
+    elif choice == 4:
+        get_choice(nf)
+    else:
         cls()
-        show_banner()
-        print()
-        path = input(Color.blue("Enter in your image's path: "))
-        path=path.strip('"')
+        print(Color.red("Choice not supported, taking you back to the main menu!"))
+        sleep(0.5)
         cls()
-        show_banner()
-        print()
-        conv_ascii(path, blocks)
+        main_menu()
 
 main_menu()
