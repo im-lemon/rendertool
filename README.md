@@ -24,5 +24,5 @@ py -m App.TUI # or App.CLI -m <mode> -p <img_path>
 
 ## Refrences
 
-![TUI Ref](assets/TUI_ref.png)
+![TUI Ref](assets/TUI_Ref.png)
 ![A cat rendered with RenderTool](assets/kitty_ascii.png)
