@@ -24,7 +24,7 @@ banner = """
 ███▀▀██▄  ██▄█▀ ██ ██ ██ ██ ██▄█▀ ██ ▀▀   ███ ██ ██ ██ ██ ██ 
 ███  ▀███ ▀█▄▄▄ ██ ██ ▀████ ▀█▄▄▄ ██      ███ ▀███▀ ▀███▀ ██ 
                                                              
-                                                             V 1.2"""
+                                                             V 2.0"""
 
 def show_banner():
     print(Color.blue(banner))
@@ -47,6 +47,8 @@ def main_menu():
     print()
     print(Color.blue("[4]: Render Image using Nerd Font glyphs."))
     print()
+    print(Color.blue("[5]: Render Image with custom charset."))
+    print()
     print(Color.blue("[0]: Exit"))
     print()
     choice = int(input(Color.blue("> ")))
@@ -54,12 +56,9 @@ def main_menu():
     def get_choice(mode):
         cls()
         show_banner()
-        print()
         path = input(Color.blue("Enter in your image's path: "))
         path=path.strip('"')
         cls()
-        show_banner()
-        print()
         conv_ascii(path, mode)
 
     if choice == 0:
@@ -67,10 +66,13 @@ def main_menu():
         sys.exit()
     elif choice == 1:
         get_choice(braille)
+
     elif choice == 2:
         get_choice(ascii)
+
     elif choice == 3:
         get_choice(blocks)
+
     elif choice == 4:
         def get_choice_nf():
             cls()
@@ -85,21 +87,39 @@ def main_menu():
             choice = int(input(Color.blue("> ")))
             cls()
             show_banner()
-            print()
             path = input(Color.blue("Enter your image's path: "))
             path=path.strip('"')
             if choice == 1:
+                cls()
                 conv_ascii(path, linux)
             elif choice == 2:
+                cls()
                 conv_ascii(path, oses)
             elif choice == 3:
+                cls()
                 conv_ascii(path, langs)
+            elif choice == "exit":
+                cls()
+                show_banner()
+                sys.exit()
             else:
                 cls()
                 print(Color.red("Choice not supported, taking you back to the main menu!"))
                 sleep(0.5)
                 get_choice_nf()
         get_choice_nf()
+    
+    elif choice == 5:
+        cls()
+        show_banner()
+        print()
+        chs = input(Color.blue("Type your charset > "))
+        path = input(Color.blue("Enter your image's path: "))
+        cls()
+        show_banner()
+        print()
+        path=path.strip('"')
+        conv_ascii(path, chs)
             
     else:
         cls()
