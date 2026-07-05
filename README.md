@@ -8,6 +8,8 @@ RenderTool is a python CLI and TUI tool that can render images using:
 
 - Unicode braille characters
 
+- NerdFont Glyphs
+
 it works by mapping brightness to characters, it is easily extendable by editing `Internal/chs.json.`
 
 ## Usage
