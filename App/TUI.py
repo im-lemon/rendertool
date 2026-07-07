@@ -84,9 +84,7 @@ def main_menu():
             print()
             print(Color.blue("[3]: Programming languages."))
             print()
-            choice = int(input(Color.blue("> ")))
-            cls()
-            show_banner()
+            choice = int(input(Color.blue("Choose your subset > ")))
             path = input(Color.blue("Enter your image's path: "))
             path=path.strip('"')
             if choice == 1:
