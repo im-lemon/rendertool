@@ -15,7 +15,7 @@ nf = charsets["nf"][0]
 
 linux = nf["linux"]
 oses = nf["oses"]
-langs = nf["languages"]
+langs = nf["langs"]
 
 banner = """                                                             
 ▄▄▄▄▄▄▄                  ▄▄            ▄▄▄▄▄▄▄▄▄          ▄▄ 
